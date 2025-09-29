@@ -7,6 +7,7 @@ void modifier();
 void Suppression();
 void affichage();
 void recherche();
+// void tri();
 
 
 // void menu();

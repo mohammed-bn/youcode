@@ -32,7 +32,7 @@ void ajoute()
     int n_status;
     id_avion[0] = 1;
 
-    printf("Entrez le nombre d avions que vous souhaitez ajouter : ");
+    printf(Bleu_ciel"Entrez le nombre d avions que vous souhaitez ajouter : ");
     scanf("%d", &n_ajoute);
 
     for (int i = 0; i < n_ajoute; i++)
@@ -56,7 +56,7 @@ void ajoute()
         scanf("%d", &n_status);
         while (n_status < 1 || n_status > 3)
         {
-            printf("le nomber incorrect veuillez saisir un nomber entre 1 et 3!\n");
+            printf(ROUGE"le nomber incorrect veuillez saisir un nomber entre 1 et 3!\n"RESET);
             scanf("%d", &n_status);
         }
         switch (n_status)
@@ -72,7 +72,7 @@ void ajoute()
             strcapy(status[i], "En vol");
             break;
         }
-        printf("%d_veuillez saisir la date d entree jj/mm/aaaa : ",i);
+        printf("%d_veuillez saisir la date d entree jj/mm/aaaa : ",i,RESET);
         while (getchar() != '\n');
         fgets(dateEentree[i], 10, stdin);
         int j = 0;
@@ -106,10 +106,10 @@ void ajoute()
         // printf("%d_%d_%d",jour,moi,annee);
         if ((jour < 1 || jour > 31) || (moi < 1 || moi > 12) || annee < 2000)
         {
-            printf("Attention la date incorecte !\n");
+            printf(ROUGE"Attention la date incorecte !\n"RESET);
         }
 
-        printf("___________________________________________\n");
+        printf(BLUE"___________________________________________\n"RESET);
     }
 }
 
@@ -162,7 +162,7 @@ void Suppression()
     int av_supr;//le id de l avion que souhaite l'itulisateur supprime
     int trouve = 0;
 
-    printf("veuillez saisir le id de l avion que vous souhaitez supprimer: ");
+    printf(viole"veuillez saisir le id de l avion que vous souhaitez supprimer: "RESET);
     scanf("%d", &av_supr);
 
     for (int i = 0; i < 1000; i++)
@@ -187,8 +187,8 @@ void Suppression()
             break;
         }
     }
-    if (trouve != 1) printf("id de l avion que vous demandez n existe pas.\n");
-    else printf("avion supprime aven un succee\n");
+    if (trouve != 1) printf(ROUGE"id de l avion que vous demandez n existe pas.\n"RESET);
+    else printf(VERT"avion supprime aven un succee\n"RESET);
 }
 
 void affichage()
@@ -196,12 +196,12 @@ void affichage()
 {
     for (int i = 0; i < n_ajoute; i++)
     {
-        printf("*********************************\n");
-        printf("id de avion  : %d\n", id_avion[i]);
+        printf(VERT"*********************************\n"RESET);
+        printf(JUEN"id de avion  : %d\n", id_avion[i]);
         printf("modele de avion Nomber : %s", modele[i]);
         printf("la capacite de avion : %d\n", capacite[i]);
         printf("la statu de avion : %s\n", status[i]);
-        printf("la date d entree Nomber: %s\n",dateEentree[i]);
+        printf("la date d entree Nomber: %s\n",dateEentree[i],JUEN);
         
     }
 }
@@ -212,67 +212,119 @@ void recherche()
     int id_re;//le id que litulisater recherche
     char modele_re[30];// le modele avion que litulisater recherche
     int trouve = 0;
-    printf("selectione le mode de recherche souhaite. \n");
-    printf("1_recherche par id.\n");
+    printf(viole"selectione le mode de recherche souhaite. \n"RESET);
+    printf(JUEN"1_recherche par id.\n");
     printf("2_recherche par modele.\n");
-    printf("3_retour a le menu principal.\n");
-    printf("veuillez saisir votre chois : ");
+    printf("3_retour a le menu principal.\n"RESET);
+    printf(viole"veuillez saisir votre chois : "RESET);
     scanf("%d", &chois_de_r);
     
     switch (chois_de_r)
     {
         case 1:
-            printf("veuillez saisir le id avion que vous recherchez : ");
-            scanf("%d", &id_re);
+            printf(Bleu_ciel"veuillez saisir le id avion que vous recherchez : ");
+            scanf("%d", &id_re,RESET);
             for (int i = 0; i < 1000; i++)
             {
                 if (id_avion[i] == id_re)
                 {   
                     trouve = 1;
-                    printf("*********************************\n");
-                    printf("id de avion  : %d\n", id_avion[i]);
+                    printf(viole"*********************************\n"RESET);
+                    printf(JUEN"id de avion  : %d\n", id_avion[i]);
                     printf("modele de avion Nomber : %s", modele[i]);
                     printf("la capacite de avion : %d\n", capacite[i]);
                     printf("la statu de avion : %s\n", status[i]);
-                    printf("la date d entree Nomber: %s\n",dateEentree[i]);
+                    printf("la date d entree Nomber: %s\n",dateEentree[i],RESET);
                     break;
                 } 
             }
             if (trouve != 1)
             {
-                printf("id que vous recherche n exixte pas!");
+                printf(ROUGE"id que vous recherche n exixte pas!"RESET);
             }
             break;
         
         case 2:
-            printf("veuillez saisir le modele avion que vous recherche : ");
-            scanf("%s", modele_re);
+            printf(Bleu_ciel"veuillez saisir le modele avion que vous recherche : ");
+            scanf("%s", modele_re,RESET);
             for (int i = 0; i < 1000; i++)
             {
                 if (strcmp(modele[i], modele_re) == 1)
                 {
                     trouve = 1;
-                    printf("*********************************\n");
+                    printf(BLUE"*********************************\n");
                     printf("id de avion  : %d\n", id_avion[i]);
                     printf("modele de avion Nomber : %s", modele[i]);
                     printf("la capacite de avion : %d\n", capacite[i]);
                     printf("la statu de avion : %s\n", status[i]);
-                    printf("la date d entree Nomber: %s\n",dateEentree[i]);
+                    printf("la date d entree Nomber: %s\n",dateEentree[i],RESET);
                     break;
                 }
             }
             if (trouve != 1)
             { 
-                printf("modele n existe pas!\n");
+                printf(ROUGE"modele n existe pas!\n"RESET);
             }
             break;    
         }
 }
+
+void tri()
+{
+    int tmp1, tmp3;
+    char tmp2[30], tmp4[30], tmp5[10];
+    int ch_tri;
+    printf("veuillez saisir le mode de tri que vous souhait.");
+    scanf("%d", &ch_tri);
+
+    switch (ch_tri)
+    {
+        case 1 : 
+            for (int i = 0; i < n_ajoute ; i++)
+            {    
+                for (int j = i + 1; j < n_ajoute; j++)
+                {
+                    if (capacite[i] > capacite[j])
+                    {
+                        tmp1 = capacite[i];
+                        capacite[i] = capacite[j];
+                        capacite[j] = tmp1;
+
+                        strcapy(tmp2,modele[i]);
+                        strcapy(modele[i], modele[j]);
+                        strcapy(modele[j], tmp2);
+
+                        tmp3 = id_avion[i];
+                        id_avion[i] = id_avion[j];
+                        id_avion[j] = tmp3;
+
+                        strcapy(tmp4, status[i]);
+                        strcapy(status[i], status[j]);
+                        strcapy(status[j], tmp4);
+
+                        strcapy(tmp5, dateEentree[i]);
+                        strcapy(dateEentree[i], dateEentree[j]);
+                        strcapy(dateEentree[j], tmp5);
+                    }
+                }
+            }
+        case 2 :
+            for (int i = 0; i < n_ajoute; i++)
+            {
+                for (int j = 0; j < n_ajoute; j++)
+                {
+                    if (modele[i][i])
+                }
+            }
+
+
+    }
+}
 void menu()
 {
     int chois;
-    printf("--------------------menu------------------\n");
-    printf("veuillez saisir un nomber pour confirmer votre chois : \n");
+    printf(viole"--------------------menu------------------\n"RESET);
+    printf(JUEN"veuillez saisir un nomber pour confirmer votre chois : \n");
     printf("1_ Pour Ajouter un avion (ou plusieurs). \n");
     printf("2_ pour Modifier un avion (modele, capacite, statut).\n");
     printf("3_ pour Supprimer un avion.\n");
@@ -280,7 +332,7 @@ void menu()
     printf("5_ Pour Rechercher un avion (par id ou par modele).\n");
     printf("6_ Pour Trier les avions (par capacite, par modele alphabetique,).\n");
     printf("7_ Pour Quiter le programe.\n");
-    printf("veuillez saisir votre chois : ");
+    printf("veuillez saisir votre chois : "RESET);
     scanf("%d", &chois);
     switch (chois)
     {
@@ -305,7 +357,9 @@ void menu()
         menu();
         break;
     case 6:
-        printf("le trie ne pas disponible pour le moument");
+        // tri();
+        affichage();
+        menu();
         break;
     case 7:
         break;
